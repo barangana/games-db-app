@@ -1,11 +1,11 @@
 import "./App.css";
-import { callApi } from "./api/API";
+import { getPopularMovies } from "./api/API";
 
 function App() {
   return (
     <div>
       <h1>hello world</h1>
-      {callApi()}
+      {getPopularMovies()}
       {/* Main Content */}
       {/* Footer */}
     </div>

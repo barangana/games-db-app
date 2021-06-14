@@ -6,6 +6,7 @@ const app = express();
 
 // Routes
 const userRoutes = require("./routes/userRoutes");
+const favoriteRoutes = require("./routes/favoriteRoutes");
 
 // Application connection port
 const port = 5000;
@@ -28,6 +29,10 @@ mongoose
 
 // Application main routes
 app.use("/user", userRoutes);
+app.use("/favorites", favoriteRoutes);
+app.get("*", (req, res) => {
+  res.status(404).send("Page not found");
+});
 
 app.get("/", (req, res) => {
   res.send("Hello World");
