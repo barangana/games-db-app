@@ -1,12 +1,11 @@
 import "./App.css";
-import { getPopularMovies } from "./api/API";
+import Users from "./components/Users";
 
 function App() {
   return (
     <div>
       <h1>hello world</h1>
-      {getPopularMovies()}
-      {/* Main Content */}
+      <Users />
       {/* Footer */}
     </div>
   );

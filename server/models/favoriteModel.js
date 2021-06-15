@@ -1,12 +1,12 @@
-const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const favoriteSchema = mongoose.Schema({
-  userId: { type: ObjectId, ref: User },
+  userId: { type: Schema.Types.ObjectId, ref: "Users" },
   movieId: { type: String, required: true },
-  title: { type: String, required: true },
+  title: { type: String },
   runtime: { type: String },
-  score: { type: number },
+  score: { type: Number },
 });
 
 const Favorites = mongoose.model("Favorites", favoriteSchema);

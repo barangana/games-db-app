@@ -3,28 +3,56 @@ const bcrypt = require("bcrypt");
 
 // Post request handled at "/user/register"
 // Creates a new user
-// 1-Make a salt and hash hash
-// 2-Call the model and create a new user with username, password and email
-// 3-Store the user data into the database
+// Verifies if the username is used in the database
+// Verifies if the email is used in the database
+// If all check works, create a user and store it in the database
 exports.registerUser = async (req, res) => {
-  const salt = await bcrypt.genSalt();
-  const hashPassword = await bcrypt.hash(req.body.password, salt);
+  verifyUsername();
 
-  const newUser = new User({
-    username: req.body.username,
-    password: hashPassword,
-    email: req.body.email,
-  });
+  function verifyUsername() {
+    User.findOne({ username: req.body.username }, (error, usedUser) => {
+      if (error) {
+        console.log("Error while verifying username occurred");
+      }
 
-  const user = await newUser.save();
-  res.status(200).json("User creation has been successful");
+      if (usedUser) {
+        console.log("Invalid username: " + req.body.username);
+        res.status(400).json("Username is not valid");
+      } else {
+        verifyEmail();
+      }
+    });
+  }
+
+  async function verifyEmail() {
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(req.body.password, salt);
+
+    User.findOne({ email: req.body.email }, (error, usedEmail) => {
+      if (error) {
+        console.log("Error while verifying email occurred");
+      }
+
+      if (usedEmail) {
+        console.log("Invalid email: " + req.body.email);
+        res.status(400).json("Email is not valid");
+      } else {
+        const newUser = new User({
+          username: req.body.username,
+          password: hashPassword,
+          email: req.body.email,
+        });
+        const user = newUser.save();
+        console.log("User was successfully made " + user);
+        res.status(200).json("User creation has been successful");
+      }
+    });
+  }
 };
 
-// Post request handled at "/user/login"
-// Allows the user to log in
-// 1-We query the database and search for the user
-// 2-If no user, send error
-// 3-If not, compare the passwords and log the user in
+// Allows the user to log in to their account
+// Finds the username and checks if it's in the database
+// Compares the hash password and plain text password
 exports.loginUser = async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body.username });
@@ -41,38 +69,13 @@ exports.loginUser = async (req, res) => {
   }
 };
 
+// Gets all users from the database and returns their username
+// Omits the id, email, password and version key from the returned query
 exports.getUsers = async (req, res) => {
   await User.find({}, (error, users) => {
     if (error) {
-      res.status(400).json({ message: "Error occurred while querying" });
+      console.log("Error occurred");
     }
-    console.log(users);
-    res.json(users);
-  });
+    res.status(200).json(users);
+  }).select(["-_id", "-email", "-password", "-__v"]);
 };
-
-function verifyUsername() {
-  User.findOne({ username: req.body.username }, (error, usedUser) => {
-    if (error) {
-      return res
-        .status(400)
-        .json({ message: "Error occurred while querying username. " });
-    } else if (usedUser) {
-      return res.status(400).json({ message: "Username is taken. " });
-    } else {
-      verifyEmail();
-    }
-  });
-}
-
-function verifyEmail() {
-  User.findOne({ email: req.body.email }, (error, usedEmail) => {
-    if (error) {
-      return res
-        .status(400)
-        .json({ message: "Error occurred while querying email. " });
-    } else if (usedEmail) {
-      return res.status(400).json({ message: "Email is already used." });
-    }
-  });
-}

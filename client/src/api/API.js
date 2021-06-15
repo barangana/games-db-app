@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import Axios from "axios";
 import { API_KEY } from "./Config";
 
@@ -19,3 +19,9 @@ export const getPopularMovies = () => {
     console.log(response);
   });
 };
+
+// export const getUsers = () => {
+//   Axios.get("/user/users").then((response) => {
+//     console.log(response);
+//   });
+// };

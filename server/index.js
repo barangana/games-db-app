@@ -18,6 +18,7 @@ const MONGO_DB = process.env.DB_URI;
 app.use(express.json());
 app.use(cors());
 
+// Connection to MongoDB
 mongoose
   .connect(MONGO_DB, {
     useNewUrlParser: true,
@@ -32,8 +33,4 @@ app.use("/user", userRoutes);
 app.use("/favorites", favoriteRoutes);
 app.get("*", (req, res) => {
   res.status(404).send("Page not found");
-});
-
-app.get("/", (req, res) => {
-  res.send("Hello World");
 });
