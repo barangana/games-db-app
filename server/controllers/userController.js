@@ -77,5 +77,5 @@ exports.getUsers = async (req, res) => {
       console.log("Error occurred");
     }
     res.status(200).json(users);
-  }).select(["-_id", "-email", "-password", "-__v"]);
+  }).select(["-email", "-password", "-__v"]);
 };

@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Axios from "axios";
+import User from "./User";
 
 function Users() {
-  const [users, setUsers] = useState();
+  const [users, setUsers] = useState([]);
 
-  Axios.get("/user/users").then((response) => {
-    console.log(response.data);
-    setUsers(response.data);
-  });
+  useEffect(() => {
+    Axios.get("/user/users").then((response) => {
+      setUsers(response.data);
+      // console.log(response);
+    });
+  }, []);
 
-  return <div>{}</div>;
+  return (
+    <div>
+      {users.map((user) => (
+        <User key={user._id} user={user} />
+      ))}
+    </div>
+  );
 }
 
 export default Users;
