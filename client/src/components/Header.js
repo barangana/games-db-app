@@ -5,7 +5,7 @@ const Header = () => {
     <div>
       <h1>app title</h1>
       <h1>favorites</h1>
-      <h1>logout</h1>
+      <h1>login/logout/register</h1>
     </div>
   );
 };
