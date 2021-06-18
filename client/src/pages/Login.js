@@ -1,13 +1,24 @@
 import { useState } from "react";
 import Axios from "axios";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginSchema } from "../constants/validation";
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    console.log(username, password);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(loginSchema),
+  });
+
+  const submitForm = (data) => {
+    console.log(data);
+    const { username, password } = data;
     Axios.post("/user/login", {
       username: username,
       password: password,
@@ -22,20 +33,21 @@ function Login() {
 
   return (
     <div className="Login">
-      <form>
+      <form onSubmit={handleSubmit(submitForm)}>
         <input
           type="text"
+          name="username"
           placeholder="Username"
-          onChange={(event) => setUsername(event.target.value)}
-          value={username}
-        ></input>
+          {...register("username", { required: true })}
+        />
+        <p>{errors.username?.message}</p>
         <input
           type="password"
+          name="password"
           placeholder="Password"
-          onChange={(event) => setPassword(event.target.value)}
-          value={password}
-        ></input>
-        <button onClick={handleLogin}>Login</button>
+          {...register("password", { required: true })}
+        />
+        <input type="submit" id="submit" />
       </form>
     </div>
   );
