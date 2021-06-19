@@ -1,7 +1,7 @@
 import React from "react";
-import Movie from "../components/Movie";
+import Movie from "../components/Movie/Movie";
 
-function Index() {
+function Main() {
   return (
     <div>
       <Movie />
@@ -9,4 +9,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default Main;

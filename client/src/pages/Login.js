@@ -1,13 +1,10 @@
-import { useState } from "react";
+import React from "react";
 import Axios from "axios";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../constants/validation";
 
 function Login() {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-
   const {
     register,
     handleSubmit,
