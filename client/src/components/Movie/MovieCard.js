@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import MoviePage from "../../pages/MoviePage";
+import PropTypes from "prop-types";
 
 function MovieCard({ popular }) {
   const { title, poster_path, id } = popular;
@@ -22,5 +22,11 @@ function MovieCard({ popular }) {
     </div>
   );
 }
+
+MovieCard.propTypes = {
+  title: PropTypes.string,
+  poster_path: PropTypes.string,
+  id: PropTypes.number.isRequired,
+};
 
 export default MovieCard;

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "axios";
 import { API_KEY } from "../api/Config";
+import PropTypes from "prop-types";
 
 import Comments from "../components/Movie/Sections/Comments";
 import Info from "../components/Movie/Sections/Info";
@@ -21,13 +22,20 @@ function MoviePage() {
 
   return (
     <div>
-      {/* {console.log(details)} */}
       <h1>{title}</h1>
-      <img src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`} />
+      <img
+        src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`}
+        alt={`${title}'s backdrop`}
+      />
       <Info id={id} movieInfo={details} />
       <Comments />
     </div>
   );
 }
+
+MoviePage.propTypes = {
+  title: PropTypes.string,
+  id: PropTypes.number.isRequired,
+};
 
 export default MoviePage;

@@ -1,5 +1,6 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 // Post request handled at "/user/register"
 // Creates a new user
@@ -56,16 +57,25 @@ exports.registerUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body.username });
-    !user && res.status(400).json("Wrong credentials");
-
+    !user && res.status(400).json("User not found");
     const validate = await bcrypt.compare(req.body.password, user.password);
-    !validate && res.status(400).json("Wrong credentials");
+    !validate && res.status(400).json("Invalid password");
 
-    const { password, ...rest } = user._doc;
-    res.status(200).json(rest);
+    // Create and assign a token with name of auth-token to the header
+    const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, {
+      expiresIn: "1h",
+    });
+    res.header("auth-token", token);
+
+    const { password, __v, email, ...rest } = user._doc;
+    // console.log(rest);
+    // res.status(200).json("Successfully logged in.");
+    // console.log(rest);
     console.log(rest);
+    console.log("Succesfully logged in");
+    res.status(200).json(rest);
   } catch (error) {
-    res.status(500).json(error);
+    return res.status(500).json(error);
   }
 };
 

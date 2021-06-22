@@ -1,5 +1,6 @@
 const express = require("express");
 const userRouter = express.Router();
+const auth = require("../controllers/authentication");
 
 const {
   registerUser,
@@ -18,6 +19,6 @@ userRouter.post("/login", loginUser);
 
 // @route  GET /users/users
 // @desc   Gets all users' data
-userRouter.get("/users", getUsers);
+userRouter.get("/users", auth, getUsers);
 
 module.exports = userRouter;

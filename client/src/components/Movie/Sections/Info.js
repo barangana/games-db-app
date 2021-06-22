@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function Info({ movieInfo }) {
   const { overview, release_date, status, runtime } = movieInfo;
@@ -16,5 +17,12 @@ function Info({ movieInfo }) {
     </div>
   );
 }
+
+Info.propTypes = {
+  description: PropTypes.string,
+  release_date: PropTypes.string,
+  status: PropTypes.string,
+  runtime: PropTypes.number,
+};
 
 export default Info;
