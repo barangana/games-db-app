@@ -1,10 +1,12 @@
-import React from "react";
+import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 const Header = () => {
   const history = useHistory();
+  const [login, setLogin] = useState("Login");
 
   const handleLogout = () => {
+    setLogin("Login");
     localStorage.clear();
     history.push("/");
   };
@@ -17,10 +19,10 @@ const Header = () => {
       <h1>favorites</h1>
 
       {localStorage.getItem("user") ? (
-        <h1 onClick={handleLogout}>logout</h1>
+        <button onClick={handleLogout}>{login}</button>
       ) : (
         <Link to="/login">
-          <h1> login </h1>
+          <button>{login}</button>
         </Link>
       )}
     </div>

@@ -6,7 +6,6 @@ function Info({ movieInfo }) {
 
   return (
     <div>
-      {console.log(movieInfo)}
       <h1>here will be the movie info section</h1>
       <div>
         <h3>description: {overview}</h3>

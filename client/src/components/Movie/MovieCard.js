@@ -26,7 +26,7 @@ function MovieCard({ popular }) {
 MovieCard.propTypes = {
   title: PropTypes.string,
   poster_path: PropTypes.string,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
 };
 
 export default MovieCard;
