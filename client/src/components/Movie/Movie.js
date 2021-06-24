@@ -18,7 +18,7 @@ const Popular = () => {
     <div>
       {/* {console.log(movies)} */}
       {movies.map((movie) => (
-        <MovieCard key={movie.id} popular={movie} />
+        <MovieCard key={movie.id} movie={movie} />
       ))}
     </div>
   );

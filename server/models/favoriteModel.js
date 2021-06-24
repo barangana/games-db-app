@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const favoriteSchema = mongoose.Schema({
-  userId: { type: Schema.Types.ObjectId, ref: "Users" },
+  userId: { type: Schema.Types.ObjectId, ref: "User" },
   movieId: { type: String, required: true },
   title: { type: String },
   runtime: { type: String },

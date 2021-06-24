@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function MovieCard({ popular }) {
-  const { title, poster_path, id } = popular;
+function MovieCard({ movie }) {
+  console.log(movie);
+  const { title, poster_path, id } = movie;
 
   const handleClick = () => {
     console.log("clicked " + title + id);
@@ -15,10 +16,10 @@ function MovieCard({ popular }) {
         <img
           src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
           onClick={handleClick}
-          alt={popular.title}
+          alt={movie.title}
         />
       </Link>
-      <h3>{popular.title}</h3>
+      <h3>{movie.title}</h3>
     </div>
   );
 }

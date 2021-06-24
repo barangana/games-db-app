@@ -1,6 +1,6 @@
 import React from "react";
 import Movie from "../components/Movie/Movie";
-import SearchBar from "../components/Searchbar";
+import SearchBar from "../components/Search/Searchbar";
 
 function Main() {
   return (

@@ -35,7 +35,7 @@ function MoviePage() {
 
 MoviePage.propTypes = {
   title: PropTypes.string,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
 };
 
 export default MoviePage;

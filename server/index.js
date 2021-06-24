@@ -7,6 +7,7 @@ const app = express();
 // Routes
 const userRoutes = require("./routes/userRoutes");
 const favoriteRoutes = require("./routes/favoriteRoutes");
+const commentRoutes = require("./routes/commentRoutes");
 
 // Application connection port
 const port = 5000;
@@ -23,6 +24,7 @@ mongoose
   .connect(MONGO_DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
   })
   .then(() => {
     app.listen(port, () => console.log(`Server running on port ${port}`));
@@ -31,6 +33,7 @@ mongoose
 // Application main routes
 app.use("/user", userRoutes);
 app.use("/favorites", favoriteRoutes);
+app.use("/comments", commentRoutes);
 app.get("*", (req, res) => {
   res.status(404).send("Page not found");
 });
