@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Axios from "axios";
-import { API_KEY } from "../../api/Config";
+import { API_KEY } from "../api/Config";
 import { Link, useHistory } from "react-router-dom";
 
 function Searchbar() {
