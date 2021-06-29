@@ -3,28 +3,32 @@ import { Link, useHistory } from "react-router-dom";
 
 const Header = () => {
   const history = useHistory();
-  const [login, setLogin] = useState("Login");
+  // const [login, setLogin] = useState("Login");
 
   const handleLogout = () => {
-    setLogin("Login");
+    // setLogin("Login");
     localStorage.clear();
     history.push("/");
   };
 
   return (
-    <div>
+    <div className="header">
       <Link to="/">
         <h1>app title</h1>
       </Link>
-      <h1>favorites</h1>
+      <Link to="/">
+        <h1>favorites</h1>
+      </Link>
 
-      {localStorage.getItem("user") ? (
-        <button onClick={handleLogout}>{login}</button>
-      ) : (
-        <Link to="/login">
-          <button>{login}</button>
-        </Link>
-      )}
+      <div className="login">
+        {localStorage.getItem("user") ? (
+          <button onClick={handleLogout}>Logout</button>
+        ) : (
+          <Link to="/login">
+            <button className="login">Login</button>
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

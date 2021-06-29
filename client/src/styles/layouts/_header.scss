@@ -1,0 +1,27 @@
+@import "../variables";
+
+.header {
+  width: 100%;
+  background-color: $primaryColor;
+  a {
+    text-decoration: none;
+    color: $secondaryColor;
+    display: inline-block;
+    padding: 10px;
+  }
+
+  .login {
+    float: right;
+    margin-top: 4px;
+    margin-right: 4px;
+  }
+
+  button {
+    background: $secondaryColor;
+    border-radius: 12px;
+    color: $textColor;
+    &:hover {
+      background-color: $primaryColor;
+    }
+  }
+}

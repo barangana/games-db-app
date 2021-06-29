@@ -45,6 +45,7 @@ function Searchbar() {
         onKeyDown={pressEnter}
         onChange={(event) => setMovieTitle(event.target.value)}
       />
+      <button onClick={searchMovie}>Search</button>
     </div>
   );
 }

@@ -17,6 +17,7 @@ const Popular = () => {
   return (
     <div>
       {/* {console.log(movies)} */}
+      <h1>Popular movies: </h1>
       {movies.map((movie) => (
         <MovieCard key={movie.id} movie={movie} />
       ))}

@@ -1,0 +1,14 @@
+footer {
+  background-color: $primaryColor;
+  a {
+    text-decoration: none;
+    color: $secondaryColor;
+  }
+}
+
+// Need to make footer stay at the bottom of content
+// footer {
+//   bottom: 0;
+//   position: absolute;
+//   width: 100%;
+// }

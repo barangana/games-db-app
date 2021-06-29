@@ -11,7 +11,7 @@ function MovieCard({ movie }) {
   };
 
   return (
-    <div>
+    <div className="movie-card">
       <Link to={`/movie/${id}`}>
         <img
           src={`https://image.tmdb.org/t/p/w500/${poster_path}`}

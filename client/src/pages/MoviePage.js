@@ -21,7 +21,7 @@ function MoviePage() {
   }, []);
 
   return (
-    <div>
+    <div className="movie-page">
       <h1>{title}</h1>
       <img
         src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`}
