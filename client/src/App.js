@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Main from "./pages/Main";
 import MoviePage from "./pages/MoviePage";
 import SearchPage from "./pages/SearchResults";
+import Error from "./pages/Error";
 import * as ROUTES from "./constants/routes";
 
 import { Suspense } from "react";
@@ -25,6 +26,7 @@ function App() {
             <Route exact path={ROUTES.REGISTER} component={Register} />
             <Route exact path={ROUTES.MOVIE} component={MoviePage} />
             <Route exact path={ROUTES.SEARCH_RESULTS} component={SearchPage} />
+            <Route component={Error} />
           </Switch>
           <Footer />
         </Suspense>

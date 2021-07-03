@@ -1,13 +1,16 @@
-import { useState } from "react";
 import Axios from "axios";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../constants/validation";
 import { useHistory } from "react-router-dom";
 
+/**
+ * Login page
+ */
 function Login() {
   const history = useHistory();
 
+  /**  Form validation with yupResolver */
   const {
     register,
     handleSubmit,
@@ -16,9 +19,12 @@ function Login() {
     resolver: yupResolver(loginSchema),
   });
 
-  // Local storage stores an empty value after page has been refreshed (Need to fix)
+  /**
+   * Calls the backend to allow the user to sign in to their account
+   * TODO: Local storage stores an empty value after page has been refreshed (Need to fix)
+   */
+
   const submitForm = (data) => {
-    // console.log(data);
     const { username, password } = data;
     Axios.post("/user/login", {
       username: username,
@@ -35,23 +41,31 @@ function Login() {
   };
 
   return (
-    <div className="Login">
+    <div className="login-form">
+      <h1>Login to your account</h1>
       <form onSubmit={handleSubmit(submitForm)}>
         <input
           type="text"
           name="username"
-          placeholder="Username"
+          className="login-text"
+          placeholder="Type your username"
           {...register("username", { required: true })}
         />
         <p>{errors.username?.message}</p>
         <input
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Type your password"
+          className="login-text"
           {...register("password", { required: true })}
         />
         <p>{errors.password?.message}</p>
-        <input type="submit" id="submit" />
+        <input
+          type="submit"
+          id="submit"
+          value="Login"
+          className="login-button"
+        />
       </form>
     </div>
   );

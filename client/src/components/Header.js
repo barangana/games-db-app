@@ -8,7 +8,7 @@ const Header = () => {
   const handleLogout = () => {
     // setLogin("Login");
     localStorage.clear();
-    history.push("/");
+    history.push("/login");
   };
 
   return (
@@ -25,7 +25,7 @@ const Header = () => {
           <button onClick={handleLogout}>Logout</button>
         ) : (
           <Link to="/login">
-            <button className="login">Login</button>
+            <button>Login</button>
           </Link>
         )}
       </div>

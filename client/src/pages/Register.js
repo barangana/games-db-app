@@ -4,6 +4,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../constants/validation";
 
+/**
+ * Register page
+ * Calls the backend and allows the user to register.
+ */
 function Register() {
   const {
     register,
@@ -30,7 +34,7 @@ function Register() {
   };
 
   return (
-    <div className="Register">
+    <div className="register-form">
       <form onSubmit={handleSubmit(submitForm)}>
         <input
           type="text"

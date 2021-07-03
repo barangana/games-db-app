@@ -7,6 +7,9 @@ import PropTypes from "prop-types";
 import Comments from "../components/Movie/Sections/Comments";
 import Info from "../components/Movie/Sections/Info";
 
+/**
+ * Gets the data of movies from the TMDB api and renders all of the movies.
+ */
 function MoviePage() {
   const { movieId } = useParams();
   const [details, setDetails] = useState([]);
