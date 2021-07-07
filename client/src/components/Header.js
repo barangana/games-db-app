@@ -14,10 +14,10 @@ const Header = () => {
   return (
     <div className="header">
       <Link to="/">
-        <h1>app title</h1>
+        <h1>AppTitle</h1>
       </Link>
       <Link to="/">
-        <h1>favorites</h1>
+        <h1>Favorites</h1>
       </Link>
 
       <div className="login">

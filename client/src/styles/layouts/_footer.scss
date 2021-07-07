@@ -1,13 +1,18 @@
 .footer {
+  font-family: $fontFamily;
   position: fixed;
-
+  text-align: center;
   width: 100%;
   bottom: 0;
   height: 40px;
   background-color: $primaryColor;
   a {
+    top: 10px;
     text-decoration: none;
-    color: $secondaryColor;
+    color: $textColor;
+    &:hover {
+      color: $lightColor;
+    }
   }
 }
 

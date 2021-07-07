@@ -1,6 +1,7 @@
 @import "../variables";
 
 .header {
+  font-family: $fontFamily;
   width: 100%;
   background-color: $primaryColor;
   a {
@@ -8,6 +9,12 @@
     color: $secondaryColor;
     display: inline-block;
     padding: 10px;
+    &:active {
+      background-color: $primaryColor;
+    }
+    &:hover {
+      color: $lightColor;
+    }
   }
 
   .login {

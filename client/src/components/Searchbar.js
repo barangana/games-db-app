@@ -22,6 +22,7 @@ function Searchbar() {
 
   useEffect(() => {
     if (!searchResults) {
+      //empty so it loads on initial render
     } else {
       history.push({
         pathname: `/searchResults/${movieTitle}`,
@@ -43,6 +44,7 @@ function Searchbar() {
         type="search"
         placeholder="Search by movie title"
         onKeyDown={pressEnter}
+        value={searchResults}
         onChange={(event) => setMovieTitle(event.target.value)}
       />
       <button onClick={searchMovie}>Search</button>
