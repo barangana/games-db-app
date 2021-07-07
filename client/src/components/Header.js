@@ -14,19 +14,24 @@ const Header = () => {
   return (
     <div className="header">
       <Link to="/">
-        <h1>AppTitle</h1>
+        <h2>AppTitle</h2>
       </Link>
       <Link to="/">
-        <h1>Favorites</h1>
+        <h2>Favorites</h2>
       </Link>
 
       <div className="login">
         {localStorage.getItem("user") ? (
           <button onClick={handleLogout}>Logout</button>
         ) : (
-          <Link to="/login">
-            <button>Login</button>
-          </Link>
+          <div>
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+            <Link to="/register">
+              <button>Register</button>
+            </Link>
+          </div>
         )}
       </div>
     </div>

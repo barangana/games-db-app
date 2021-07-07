@@ -1,6 +1,7 @@
 @import "../variables";
 
 .login-form {
+  background-color: $primaryColor;
   margin: auto;
   text-align: center;
   outline-style: solid;
@@ -14,14 +15,29 @@
 
   h1 {
     top: 2em;
+    font-family: "Helvetica";
+    color: $lightColor;
   }
 
-  form {
-    top: 10em;
-  }
-
-  input {
-    margin-bottom: 10px;
+  button,
+  input#submit {
+    top: 2em;
+    border-radius: 12px;
+    border: none;
+    color: $lightColor;
+    background-color: $loginPrimaryColor;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 32px;
+    margin: 5px;
+    &:hover {
+      background-color: $loginSecondaryColor;
+      color: $lightColor;
+      outline-style: solid;
+      outline-color: $primaryColor;
+    }
   }
 
   .login-text {
@@ -29,23 +45,18 @@
     width: 75%;
     padding-left: 10px;
   }
+  input {
+    margin-bottom: 10px;
+  }
+}
 
-  .login-button {
-    top: 2em;
-    border-radius: 5px;
-    border: none;
-    color: $secondaryColor;
-    background-color: $primaryColor;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    &:hover {
-      background-color: $secondaryColor;
-      color: $primaryColor;
-      outline-style: solid;
-      outline-color: $primaryColor;
-    }
+form {
+  top: 8em;
+}
+
+.register-form {
+  @extend .login-form;
+  form {
+    top: 6em;
   }
 }

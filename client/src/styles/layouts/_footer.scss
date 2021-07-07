@@ -1,15 +1,15 @@
 .footer {
   font-family: $fontFamily;
+  background-color: $primaryColor;
   position: fixed;
   text-align: center;
   width: 100%;
   bottom: 0;
   height: 40px;
-  background-color: $primaryColor;
   a {
     top: 10px;
     text-decoration: none;
-    color: $textColor;
+    color: $footerTextColor;
     &:hover {
       color: $lightColor;
     }

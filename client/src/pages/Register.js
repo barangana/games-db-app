@@ -35,11 +35,13 @@ function Register() {
 
   return (
     <div className="register-form">
+      <h1>REGISTER</h1>
       <form onSubmit={handleSubmit(submitForm)}>
         <input
           type="text"
           name="email"
           placeholder="Enter your email"
+          className="login-text"
           {...register("email", { required: true })}
         />
         <p>{errors.email?.message}</p>
@@ -47,6 +49,7 @@ function Register() {
           type="text"
           name="username"
           placeholder="Enter your username"
+          className="login-text"
           {...register("username", { required: true })}
         />
         <p>{errors.username?.message}</p>
@@ -54,6 +57,7 @@ function Register() {
           type="password"
           name="password"
           placeholder="Enter your password"
+          className="login-text"
           {...register("password", { required: true })}
         />
         <p>{errors.password?.message}</p>
@@ -61,10 +65,11 @@ function Register() {
           type="password"
           name="confirmPassword"
           placeholder="Confirm your password"
+          className="login-text"
           {...register("confirmPassword", { required: true })}
         />
         <p>{errors.confirmPassword && "Passwords must match"}</p>
-        <input type="submit" id="submit" />
+        <input type="submit" id="submit" value="Register" />
       </form>
     </div>
   );

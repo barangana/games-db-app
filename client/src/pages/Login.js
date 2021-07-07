@@ -42,7 +42,7 @@ function Login() {
 
   return (
     <div className="login-form">
-      <h1>Login to your account</h1>
+      <h1>LOGIN</h1>
       <form onSubmit={handleSubmit(submitForm)}>
         <input
           type="text"

@@ -16,7 +16,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Router>
         <Suspense fallback={<p>Loading...</p>}>
           <Header />
@@ -31,7 +31,6 @@ function App() {
           <Footer />
         </Suspense>
       </Router>
-      {/* {Add the footer component} */}
     </div>
   );
 }

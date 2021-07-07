@@ -6,14 +6,14 @@
   background-color: $primaryColor;
   a {
     text-decoration: none;
-    color: $secondaryColor;
+    color: $lightColor;
     display: inline-block;
-    padding: 10px;
+    padding: 1em;
     &:active {
       background-color: $primaryColor;
     }
     &:hover {
-      color: $lightColor;
+      color: $secondaryColor;
     }
   }
 
@@ -24,11 +24,12 @@
   }
 
   button {
-    background: $secondaryColor;
-    border-radius: 12px;
-    color: $textColor;
+    background: Transparent;
+    border: none;
+    color: $lightColor;
+    font-weight: bold;
     &:hover {
-      background-color: $primaryColor;
+      color: $secondaryColor;
     }
   }
 }
